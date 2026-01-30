@@ -579,19 +579,9 @@ tr:hover {
         margin-bottom: 15px;
         display: block;    /* Fuerza a que bajen de línea */
     }
-
-    /* Ocultamos los iconos decorativos en móvil si molestan, 
-       o los ajustamos para que se queden arriba */
-    .iconos {
-        display: none; /* Opcional: Ocultarlos para limpiar el diseño en móvil */
-    }
     
     .btn-submit {
         width: 100%; /* Botón grande fácil de pulsar */
-    }
-
-    input, textarea, select {
-        width: 90%; /* Los formularios se expanden para ser fáciles de tocar */
     }
 
     /* CRONOLOGÍA */
