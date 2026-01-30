@@ -1,232 +1,247 @@
-*{
+/* --- RESET GENERAL --- */
+* {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
-body{
-    font-family: Arial, sans-serif;
-    background-color: #f3f0f0;
-    color: #333;
-    line-height: 2;
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f0f0; /* Color de fondo gris muy clarito para toda la web */
+    color: #333; /* Color de texto gris oscuro (más suave que el negro puro) */
+    line-height: 1.8; /* Espaciado entre líneas de texto para mejorar la lectura */
 }
 
-header{
+/* --- CABECERA (HEADER) --- */
+header {
     background: #ffffff;
     color: #fff;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    display: flex; /* Activa Flexbox para alinear el logo a un lado y el menú al otro */
+    align-items: center; /* Centra verticalmente los elementos dentro del header */
+    justify-content: space-between; /* Empuja el logo a la izquierda y el menú a la derecha */
 }
 
-nav ul{
-    list-style: none;
-    display: flex;
+nav ul {
+    list-style: none; /* Quita los puntos negros de la lista desordenada */
+    display: flex; /* Pone los elementos de la lista en fila (horizontal) */
     justify-content: center;
-    gap: 35px;
+    gap: 35px; /* Espacio entre cada enlace del menú */
 }
 
-li a{
-    text-decoration: none;
+li a {
+    text-decoration: none; /* Quita el subrayado azul por defecto de los enlaces */
 }
 
-li a:hover{
-    text-decoration: underline;
+li a:hover {
+    text-decoration: underline; /* Añade subrayado cuando pasas el ratón por encima */
 }
 
-#nav-aside{
+#nav-aside {
     color: rgb(22, 42, 111);
     display: flex;
     padding: 1.5rem;
     border-radius: 5px;
-    margin-right: 4.5rem;
+    margin-right: 4.5rem; /* Separación desde el borde derecho de la pantalla de los nombres de las páginas*/
 }
 
-.logo{
-    width: 200px;
+.logo {
+    width: 200px; /* Tamaño fijo para que el logo no se deforme */
     height: auto;
     margin: 0.9rem;
-    }
+}
 
-#hero-index{
+/* --- SECCIÓN HERO (PORTADA PRINCIPAL) --- */
+#hero-index {
     background-image: url('../imágenes/fondo-section-hero.jpg');
-    background-size: cover;
+    background-size: cover; /* La imagen cubre todo el fondo sin deformarse */
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
-    height: 85vh;
+    background-attachment: fixed; /* Efecto Parallax: la imagen se queda fija al hacer scroll */
+    height: 85vh; /* Altura del 85% de la ventana del navegador. Hace que ocupe casi toda la pantalla, pero deja un trocito abajo para que se vea lo siguiente*/
 
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Alinea los elementos (título, texto, botón) en columna vertical */
+    align-items: center; /* Centrado horizontal */
+    justify-content: center; /* Centrado vertical */
     text-align: center;
 
-    position: relative;
+    position: relative; /* Necesario para que la capa oscura (::before) se posicione encima */
 }
 
-#hero-index::before{
+/* Capa oscura semitransparente sobre la imagen de fondo */
+#hero-index::before {
     content: "";
     position: absolute;
-    inset: 0; 
-    background-color: rgba(0, 0, 0, 0.55); /* blanco translúcido */
-    z-index: 1;
+    inset: 0; /* Ocupa todo el espacio del padre */
+    background-color: rgba(0, 0, 0, 0.55); /* Color negro al 55% de opacidad para leer mejor el texto */
+    z-index: 1; /* Nivel de capa (por debajo del texto) */
 }
 
-.hero-content{
+/*Texto del hero*/
+.hero-content {
     color: #ffffff;
-    z-index: 2;
+    z-index: 2; /* Nivel de capa superior para que el texto esté encima de la sombra oscura */
 }
 
-.hero-content h1{
-    font-size: 4rem;
+.hero-content h1 {
+    font-size: 4rem; /* Tamaño de letra gigante */
     margin-bottom: 2rem;
 }
 
-.hero-content p{
+.hero-content p {
     font-size: 1.7rem;
     margin-bottom: 2rem;
 }
 
+/* --- BOTÓN 3D ANIMADO --- */
 button {
-        width: 140px;
-        height: 50px;
-        position: relative;
-        background: none;
-        outline: none;
-        border: none;
-        padding: 0;
-        margin: 0;
-        position: absolute;
+    width: 140px;
+    height: 50px;
+    position: relative;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute; /* Posicionamiento absoluto para colocarlo abajo */
     bottom: 60px;
-    transform: translateX(-50%);
-      }
-      .top {
-        width: 100%;
-        height: 100%;
-        background: rgb(144, 255, 249);
-        font-size: 1rem;
-        color: rgb(36, 38, 34);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 7mm;
-        outline: 2px solid rgb(36, 38, 34);
-        transition: 0.2s;
-        position: relative;
-        overflow: hidden;
-      }
-      .bottom {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgb(144, 255, 249);
-        top: 10px;
-        left: 0;
-        border-radius: 7mm;
-        outline: 2px solid rgb(36, 38, 34);
-        z-index: -1;
-      }
-      button:active .top {
-        transform: translateY(10px);
-      }
-      button::before {
-        position: absolute;
-        content: "";
-        width: calc(100% + 2px);
-        height: 100%;
-        background: rgb(140, 140, 140);
-        top: 14px;
-        left: -1px;
-        border-radius: 7mm;
-        outline: 2px solid rgb(36, 38, 34);
-        z-index: -1;
-      }
-      .top::before {
-        position: absolute;
-        content: "";
-        width: 15px;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.1);
-        transform: skewX(30deg);
-        left: -20px;
-        transition: 0.25s;
-      }
-      button:active .top::before {
-        left: calc(100% + 20px);
-      }
-      button:hover .top::before {
-        left: calc(100% + 20px);
-      }
-      .top:hover{
-        background-color: rgb(39, 223, 255);
-      }
-      
-
-.tarjetas{
-    background-color: #ffffff; 
-    border-radius: 12px;      
-    border: 1px solid rgba(0,0,0,0.06);
-    overflow: hidden;        
-    padding: 16px;     
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    margin: 0 1.2rem 1.2rem 1.2rem;
-    width: 400px;
-    
+    transform: translateX(-50%); /* Truco para centrarlo exactamente en horizontal */
 }
 
-#section-tarjetas{
+.top {
+    width: 100%;
+    height: 100%;
+    background: rgb(144, 255, 249); /* Color cian de la cara superior */
+    font-size: 1rem;
+    color: rgb(36, 38, 34);
     display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7mm;
+    outline: 2px solid rgb(36, 38, 34); /* Borde negro grueso */
+    transition: 0.2s; /* Suavidad de la animación al pulsar */
+    position: relative;
+    overflow: hidden; /* Para que el brillo no se salga del botón */
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(144, 255, 249);
+    top: 10px; /* Desplaza la "sombra" hacia abajo para dar efecto 3D */
+    left: 0;
+    border-radius: 7mm;
+    outline: 2px solid rgb(36, 38, 34);
+    z-index: -1; /* Se pone detrás de la cara superior */
+}
+
+/* Efecto de "presionar" el botón */
+button:active .top {
+    transform: translateY(10px); /* Baja la cara superior 10px */
+}
+
+/* Sombra lateral gris del botón 3D */
+button::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 2px);
+    height: 100%;
+    background: rgb(140, 140, 140);
+    top: 14px;
+    left: -1px;
+    border-radius: 7mm;
+    outline: 2px solid rgb(36, 38, 34);
+    z-index: -1;
+}
+
+/* Efecto de brillo que pasa por encima */
+.top::before {
+    position: absolute;
+    content: "";
+    width: 15px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Brillo sutil */
+    transform: skewX(30deg); /* Inclina el brillo */
+    left: -20px;
+    transition: 0.25s;
+}
+
+/* Animación del brillo al pasar el ratón */
+button:hover .top::before {
+    left: calc(100% + 20px); /* Mueve el brillo de izquierda a derecha */
+}
+.top:hover {
+    background-color: rgb(39, 223, 255); /* Cambia ligeramente el color al pasar el ratón */
+}
+
+/* --- TARJETAS DE SERVICIOS (INDEX) --- */
+.tarjetas {
+    background-color: #ffffff;
+    border-radius: 12px; /* Bordes redondeados */
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para dar elevación */
+    margin: 0 1.2rem 1.2rem 1.2rem;
+    width: 400px;
+}
+
+#section-tarjetas {
+    display: flex; /* Pone las tarjetas una al lado de la otra */
     justify-content: center;
     text-align: center;
-    gap: 20px;
+    gap: 20px; /*Establece el espacio ideal entre tarjetas*/
     padding: 2.5rem;
 }
 
-.mini{
+/*Ajuste de las imágenes de las tarjetas*/
+.mini {
     width: 100px;
     height: auto;
-    margin-bottom: 15px;
+    margin-bottom: 1.1rem;
 }
 
-#título-tarjetas{
+#título-tarjetas {
     text-align: center;
     margin: 2.2rem 0 0 0;
     font-size: 3.2rem;
 }
 
-.tarjetas h3{
+.tarjetas h3 {
     font-size: 1.5rem;
 }
 
-.footer{
-    background-color: #111111;
+/* --- FOOTER (PIE DE PÁGINA) --- */
+.footer {
+    background-color: #111111; /* Fondo negro */
     color: #fff;
     text-align: center;
     padding: 2rem;
     font-size: 0.9rem;
 }
 
-.footer-redes{
+.footer-redes {
     margin: 0.9rem;
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.footer a{
+.footer a {
     color: #fff;
     text-decoration: none;
 }
 
-.footer a:hover{
+.footer a:hover {
     text-decoration: underline;
 }
 
-fieldset{
+/* --- FORMULARIO DE CONTACTO --- */
+fieldset {
     background-color: #ffffff;
-    box-shadow: 0 0 6px rgba(0,0,0,0.8);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.8); /* Sombra fuerte alrededor del formulario */
     border-radius: 8px;
     padding: 1rem;
     margin: 1.5rem;
@@ -237,41 +252,41 @@ fieldset{
     height: auto;
 }
 
-#main_contacto{
+#main_contacto {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background-image: url("../imágenes/fondo\ formulario.png");
+    background-image: url("../imágenes/fondo\ formulario.png"); /* Imagen de fondo del formulario */
 }
 
-#titulo_fieldset{
+#titulo_fieldset {
     margin-bottom: 1rem;
     font-size: 3rem;
 }
 
-
-label{
-    display: block;
+label {
+    display: block; /* Hace que la etiqueta ocupe su propia línea */
     margin-bottom: 0.5rem;
     font-weight: bold;
     margin-top: 1.2rem;
 }
 
-input{
+/* Estilos compartidos para inputs y selects */
+input {
     width: 30%;
     margin: 0.5em;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Borde gris suave */
     border-radius: 4px;
     font-size: 1rem;
     margin-bottom: 1rem;
 }
 
-#mensaje{
+#mensaje {
     width: 58%;
-    height: 150px;
+    height: 150px; /* Altura fija para el área de texto grande */
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -279,7 +294,7 @@ input{
     margin: 1em;
 }
 
-select{
+select {
     width: 58%;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -289,124 +304,135 @@ select{
     margin: 0.5em;
 }
 
-#sexo{
+#sexo {
     width: 30%;
     margin-left: 0.5rem;
     margin: 0.5em;
     margin-bottom: 1rem;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     width: 25%;
     padding: 0.7rem;
-    background-color: #1c65e3;
+    background-color: #1c65e3; /* Botón azul brillante */
     color: #fff;
     border: none;
-    cursor: pointer;
+    cursor: pointer; /* Cambia el cursor a "mano" al pasar por encima */
 }
 
-.iconos{
+.iconos {
     width: 40px;
     height: auto;
     padding-bottom: 0.4rem;
 }
 
+/* Truco de alineación simple para iconos e inputs */
 .iconos, input, select {
-    vertical-align: middle; /* El truco mágico */
-    display: inline-block;  /* Asegura que se comporten como bloques en línea */
+    vertical-align: middle; 
+    display: inline-block; 
 }
 
-input[type="submit"]:hover{
-    background-color: #7486a7;
+input[type="submit"]:hover {
+    background-color: #7486a7; /* Oscurece el botón al pasar el ratón */
 }
 
-input[type="checkbox"]{
-    width: auto;
+input[type="checkbox"] {
+    width: auto; /* El checkbox debe tener su tamaño natural, no el 30% */
     margin-right: 0.5rem;
 }
 
-.btn-submit{
+.btn-submit {
     display: block;
-    margin: 2rem auto;
+    margin: 2rem auto; /* Centrado automático */
     width: 160px;
     cursor: pointer;
 }
 
-table{
+/* --- TABLA DE CRONOLOGÍA --- */
+table {
     background-color: #fff;
     border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden; /* Asegura que las esquinas redondeadas recorten el contenido */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 95%;
     margin: 2rem;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Elimina espacios dobles entre bordes de celdas */
     text-align: center;
 }
 
+/* Selecciona solo la segunda columna (Descripción) para alinearla a la izquierda */
 tbody td:nth-child(2) {
-    text-align: left; 
-    padding-left: 20px;
+    text-align: left;
+    padding-left: 1.5rem;
 }
 
-th, td{
-    padding: 1rem;
-
+th, td {
+    padding: 1rem; /* Espaciado interno de las celdas */
 }
 
+/* Cabecera de la tabla con degradado de marca */
 thead tr {
-  text-align: center;
-  background: linear-gradient(90deg, #0b2545 0%, #4facfe 100%);
-  color: white;
+    text-align: center;
+    background: linear-gradient(90deg, #0b2545 0%, #4facfe 100%);
+    color: white;
 }
 
-tr:nth-child(even){background-color: #eee9e9;}
+/* Efecto cebra: colorea las filas pares */
+tr:nth-child(even) {
+    background-color: #eee9e9;
+}
 
-tr:hover {background-color: #ddd;}
+/* Efecto hover: ilumina la fila al pasar el ratón */
+tr:hover {
+    background-color: #ddd;
+}
 
+/* Etiquetas de estado (Píldoras de color) */
 .status-completado {
-    background-color: #d1e7dd;
-    color: #0f5132;
+    background-color: #d1e7dd; /* Fondo verde claro */
+    color: #0f5132; /* Texto verde oscuro */
 }
 
 .status-progreso {
-    background-color: #fff3cd;
+    background-color: #fff3cd; /* Fondo amarillo claro */
     color: #856404;
 }
 
 .status-pendiente {
-    background-color: #e2e3e5;
+    background-color: #e2e3e5; /* Fondo gris */
     color: #41464b;
 }
 
+/* --- PÁGINA DE PROYECTO (VENTAS) --- */
 #proyecto {
-    display: flex;              
-    align-items: stretch;   
+    display: flex; /* Layout flexible lado a lado */
+    align-items: stretch; /* Estira las columnas para que tengan la misma altura */
     border-radius: 10px;
     margin: 4rem;
     background-color: #ffffff;
-    box-shadow: 0px 0px 5px rgba(17, 121, 182, 0.815);
+    box-shadow: 0px 0px 5px rgba(17, 121, 182, 0.815); /* Resplandor azulado */
 }
 
-#proyecto-izquierda{
+#proyecto-izquierda {
     padding: 3.5rem;
-    flex: 2;
+    flex: 2; /* Ocupa 2 partes del espacio disponible (más ancho) */
 }
 
-#proyecto-izquierda h3{
+#proyecto-izquierda h3 {
     margin-bottom: 1rem;
-    font-size: x-large;
+    font-size: 1.5rem;
 }
 
-#proyecto-izquierda h1{
+#proyecto-izquierda h1 {
     margin-bottom: 1.5rem;
     font-size: 2.2rem;
 }
 
 #proyecto-derecha {
     display: flex;
-    flex-direction: column;     
-    background-color: #dad8d8;
-    flex: 1;
+    flex-direction: column;
+    background-color: #dad8d8; /* Fondo gris para diferenciar la zona visual */
+    flex: 1; /* Ocupa 1 parte del espacio (más estrecho) */
     margin: 2rem;
     padding: 2rem;
     border-radius: 10px;
@@ -414,21 +440,21 @@ tr:hover {background-color: #ddd;}
     justify-content: center;
 }
 
-#proyecto-ofrece{
+#proyecto-ofrece {
     margin-top: 2rem;
-    padding-left: 20px;
-    display: flex;              
+    display: flex; /* Flex para poner que ofrece y para quien es uno al lado del otro*/
     align-items: stretch;
 }
 
-#proyecto-ofrece ul li{
+/* Personalización de las listas con checks azules*/
+#proyecto-ofrece ul li {
     position: relative;
-    padding-left: 25px;
+    padding-left: 25px; /* Deja espacio para el icono de check */
     margin-bottom: 12px;
-
 }
 
-#proyecto-ofrece ul li::before{
+/* Crea el check "✓" azul*/
+#proyecto-ofrece ul li::before {
     content: '✓';
     position: absolute;
     left: 0;
@@ -436,27 +462,42 @@ tr:hover {background-color: #ddd;}
     font-weight: bold;
 }
 
-#proyecto-ofrece ul{
-    list-style: none; /* Quitamos los puntos negros feos */
-    padding: 0;
+#proyecto-ofrece ul {
+    list-style: none; /* Quita los puntos por defecto */
 }
 
-#elementos_ofrece{
+/*Parte izquierda de la izquierda(Qué ofrecemos)*/
+#elementos_ofrece {
     width: 60%;
+    display: flex;
+    flex-direction: column;
 }
 
-#destinado{
-    flex-direction: column;
+/*Parte derecha de la izquierda (Para quién es)*/
+#destinado {
+    display: flex; /*Para que ocupe un poco menos que la parte de su izquierda, junto con el width*/
+    flex-direction: column; /*aseguraa que el Título se quede arriba y la Lista justo debajo*/
     width: 40%;
     margin-left: 3rem;
 }
 
-#caracteristicas-proyecto h4{
+/* -- TARJETA GRIS DE LA DERECHA -- */
+#imagen-reserva-proyecto {
+    width: 70%;
+    height: auto;
+    margin: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(17, 121, 182, 0.815);
+}
+
+/*Título de la parte derecha (tarjeta gris)*/
+#caracteristicas-proyecto h4 {
     font-size: x-large;
     margin-bottom: 0.6rem;
 }
 
-#tarjetitas-caracteristicas p{
+/* Etiquetas redondeadas (tags) */
+#tarjetitas-caracteristicas p {
     background-color: white;
     border-radius: 20px;
     padding: 0.4rem;
@@ -465,57 +506,32 @@ tr:hover {background-color: #ddd;}
 }
 
 #tarjetitas-caracteristicas p:hover {
-    box-shadow: 0px 0px 15px rgba(17, 121, 182, 0.815);
+    box-shadow: 0px 0px 15px rgba(17, 121, 182, 0.815); /* Efecto de brillo al pasar ratón */
 }
 
-#imagen-reserva-proyecto{
-    width: 70%;
-    height: auto;
-    margin: 2rem;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(17, 121, 182, 0.815); 
-}
+/* --- DISEÑO RESPONSIVO (MÓVILES Y TABLETS) --- */
 
+/* Para pantallas menores a 768px (Móviles) */
+@media (max-width: 768px) {
 
-@media (max-width: 1024px){
-    #proyecto {
-        flex-direction: column;
-        margin: 2rem;
-    }
-
-    #proyecto-izquierda, #proyecto-derecha {
-        flex: none;
-        margin: 1rem 0;
-    }
-
-    #proyecto-derecha {
-        padding: 30px;
-    }
-
-    #imagen-reserva-proyecto{
-        width: 80%;
-    }
-}
-
-@media (max-width: 768px){
-    #section-tarjetas{
-        flex-direction: column;
+    #section-tarjetas {
+        flex-direction: column; /* Apila las tarjetas verticalmente */
         align-items: center;
     }
 
-    .tarjetas{
-        width: 90%;
+    .tarjetas {
+        width: 90%; /* Las tarjetas ocupan casi todo el ancho del móvil */
     }
 
-    input, textarea, select{
-        width: 90%;
+    input, textarea, select {
+        width: 90%; /* Los formularios se expanden para ser fáciles de tocar */
     }
 
-    .hero-content h1{
-        font-size: 2.5rem;
+    .hero-content h1 {
+        font-size: 2.5rem; /* Reduce el tamaño del título gigante */
     }
 
-    .hero-content p{
+    .hero-content p {
         font-size: 1.2rem;
     }
 }
