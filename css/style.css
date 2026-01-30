@@ -1,4 +1,4 @@
-/* --- RESET GENERAL --- */
+/* RESET GENERAL */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     line-height: 1.8; /* Espaciado entre líneas de texto para mejorar la lectura */
 }
 
-/* --- CABECERA (HEADER) --- */
+/* CABECERA DE LA PÁGINA (donde los nav) */
 header {
     background: #ffffff;
     color: #fff;
@@ -51,7 +51,7 @@ li a:hover {
     margin: 0.9rem;
 }
 
-/* --- SECCIÓN HERO (PORTADA PRINCIPAL) --- */
+/* SECTION HERO. Portada de la página */
 #hero-index {
     background-image: url('../imágenes/fondo-section-hero.jpg');
     background-size: cover; /* La imagen cubre todo el fondo sin deformarse */
@@ -94,7 +94,7 @@ li a:hover {
     margin-bottom: 2rem;
 }
 
-/* --- BOTÓN 3D ANIMADO --- */
+/* Botón 3d del vídeo que nos pasó el profe */
 button {
     width: 140px;
     height: 50px;
@@ -176,7 +176,7 @@ button:hover .top::before {
     background-color: rgb(39, 223, 255); /* Cambia ligeramente el color al pasar el ratón */
 }
 
-/* --- TARJETAS DE SERVICIOS (INDEX) --- */
+/* TARJETAS de la parte de abajo del índice */
 .tarjetas {
     background-color: #ffffff;
     border-radius: 12px; /* Bordes redondeados */
@@ -213,7 +213,7 @@ button:hover .top::before {
     font-size: 1.5rem;
 }
 
-/* --- FOOTER (PIE DE PÁGINA) --- */
+/* FOOTER igual para todas las páginas */
 .footer {
     background-color: #111111; /* Fondo negro */
     color: #fff;
@@ -238,7 +238,7 @@ button:hover .top::before {
     text-decoration: underline;
 }
 
-/* --- FORMULARIO DE CONTACTO --- */
+/* FORMULARIO DE CONTACTO */
 fieldset {
     background-color: #ffffff;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.8); /* Sombra fuerte alrededor del formulario */
@@ -348,7 +348,7 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-/* --- TABLA DE CRONOLOGÍA --- */
+/* TABLA COMPLEJA DE CRONOLOGÍA DEL PROYECTO */
 table {
     background-color: #fff;
     border-radius: 12px;
@@ -403,7 +403,7 @@ tr:hover {
     color: #41464b;
 }
 
-/* --- PÁGINA DE PROYECTO (VENTAS) --- */
+/* PÁGINA DE LA VENTA DEL PROYECTO (sistema de reservas) */
 #proyecto {
     display: flex; /* Layout flexible lado a lado */
     align-items: stretch; /* Estira las columnas para que tengan la misma altura */
@@ -509,11 +509,53 @@ tr:hover {
     box-shadow: 0px 0px 15px rgba(17, 121, 182, 0.815); /* Efecto de brillo al pasar ratón */
 }
 
-/* --- DISEÑO RESPONSIVO (MÓVILES Y TABLETS) --- */
+/* RESPONSIVE DESIGN */
 
 /* Para pantallas menores a 768px (Móviles) */
 @media (max-width: 768px) {
+    
+    /* PARTE DE ARRIBA DE LA PÁGINA, IGUAL EN TODAS*/
+    header {
+        flex-direction: column; /* Pone el logo encima y el menú debajo */
+        padding-bottom: 1rem;
+    }
 
+    .logo {
+        margin: 1rem auto; /* Centra el logo */
+        width: 180px;      /* Un pelín más pequeño */
+    }
+
+    #nav-aside {
+        margin-right: 0;   /* Quita el margen derecho que empujaba el menú */
+        padding: 0;
+        width: 100%;       /* Ocupa todo el ancho */
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: column; /* Enlaces uno debajo del otro */
+        gap: 15px;              /* Más espacio entre enlaces para el dedo */
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* TEXTOS */
+    body {
+        font-size: 16px; /* Asegura un tamaño legible base */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem; /* Título más pequeño para que quepa */
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        padding: 0 20px;   /* Margen lateral para que el texto no toque los bordes */
+    }
+
+    /* SECCIÓN INFERIOR PÁGINA ÍNDICE*/
     #section-tarjetas {
         flex-direction: column; /* Apila las tarjetas verticalmente */
         align-items: center;
@@ -523,16 +565,68 @@ tr:hover {
         width: 90%; /* Las tarjetas ocupan casi todo el ancho del móvil */
     }
 
+    /* FORMULARIO */
+    fieldset {
+        width: 95%;        /* El formulario ocupa casi toda la pantalla */
+        padding: 1rem 0.5rem;
+    }
+
+    /* Hacemos que los inputs ocupen todo el ancho y se pongan uno bajo otro */
+    input, select, textarea, #mensaje, #sexo {
+        width: 100%;       
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 15px;
+        display: block;    /* Fuerza a que bajen de línea */
+    }
+
+    /* Ocultamos los iconos decorativos en móvil si molestan, 
+       o los ajustamos para que se queden arriba */
+    .iconos {
+        display: none; /* Opcional: Ocultarlos para limpiar el diseño en móvil */
+    }
+    
+    .btn-submit {
+        width: 100%; /* Botón grande fácil de pulsar */
+    }
+
     input, textarea, select {
         width: 90%; /* Los formularios se expanden para ser fáciles de tocar */
     }
 
-    .hero-content h1 {
-        font-size: 2.5rem; /* Reduce el tamaño del título gigante */
+    /* CRONOLOGÍA */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap; /* Evita que el texto de las celdas se parta feo */
+        width: 100%;
+        margin: 1rem 0;
     }
 
-    .hero-content p {
-        font-size: 1.2rem;
+    /* PÁGINA VENTA PROYECTO */
+    #proyecto {
+        margin: 1rem;      /* Menos margen exterior */
+        flex-direction: column;
+    }
+
+    #proyecto-izquierda {
+        padding: 1.5rem;   /* Menos relleno interno */
+    }
+
+    #proyecto-ofrece {
+        flex-direction: column; /* "Qué ofrecemos" arriba, "Para quién" abajo */
+    }
+
+    #elementos_ofrece, 
+    #destinado {
+        width: 100%;       /* Que ocupen todo el ancho */
+        margin-left: 0;    /* Quitamos márgenes laterales */
+        margin-top: 20px;
+    }
+
+    #imagen-reserva-proyecto {
+        width: 100%;
+        margin: 1rem 0;
     }
 }
 
