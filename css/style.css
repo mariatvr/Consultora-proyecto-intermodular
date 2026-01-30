@@ -338,7 +338,6 @@ input[type="submit"]:hover {
 
 input[type="checkbox"] {
     width: auto; 
-    margin-right: 0.5rem;
 }
 
 .btn-submit {
