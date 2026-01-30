@@ -326,7 +326,7 @@ input[type="submit"] {
     padding-bottom: 0.4rem;
 }
 
-/* Truco de alineación simple para iconos e inputs */
+/* Alineación iconos e inputs */
 .iconos, input, select {
     vertical-align: middle; 
     display: inline-block; 
@@ -337,7 +337,7 @@ input[type="submit"]:hover {
 }
 
 input[type="checkbox"] {
-    width: auto; /* El checkbox debe tener su tamaño natural, no el 30% */
+    width: auto; 
     margin-right: 0.5rem;
 }
 
@@ -496,7 +496,7 @@ tr:hover {
     margin-bottom: 0.6rem;
 }
 
-/* Etiquetas redondeadas (tags) */
+/* Características redondeadas */
 #tarjetitas-caracteristicas p {
     background-color: white;
     border-radius: 20px;
